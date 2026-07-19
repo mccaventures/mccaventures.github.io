@@ -20,8 +20,14 @@ npm run preview
 
 Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the
 site and publishes it to GitHub Pages (`mccaventures/mccaventures.github.io`).
-The custom domain `mccaventures.com` is configured via `public/CNAME`; DNS
-records at the domain registrar must point to GitHub Pages separately.
+The custom domain `mccaventures.com` is configured via `public/CNAME`. At the domain registrar (GoDaddy), add four `A` records for the apex domain pointing to GitHub Pages' IPs:
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
 
 ## Adding a project
 
