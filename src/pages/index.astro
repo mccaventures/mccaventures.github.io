@@ -2,5 +2,45 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="MCCA Ventures LLC">
-  <h1>MCCA Ventures LLC</h1>
+  <section class="hero">
+    <h1>MCCA Ventures LLC</h1>
+    <p class="lead">
+      MCCA Ventures LLC is a holding company that builds, launches, and
+      operates a growing portfolio of mobile applications.
+    </p>
+    <p>
+      Our team creates focused, well-crafted apps across a range of
+      categories — from gaming to personal finance and beyond — each one
+      built as its own independent product with its own identity and
+      purpose.
+    </p>
+    <p>
+      We believe small, dedicated teams shipping simple, useful software
+      beats bloated platforms trying to do everything at once. Every app in
+      our portfolio is designed to do one thing well.
+    </p>
+    <a class="cta" href="/projects/">View our Projects →</a>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+  }
+  .lead {
+    font-size: 1.2rem;
+    color: var(--color-text-muted);
+  }
+  .cta {
+    display: inline-block;
+    margin-top: var(--space-md);
+    padding: 0.7rem 1.4rem;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+</style>
