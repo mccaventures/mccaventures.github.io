@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+---
+<BaseLayout title="Projects — MCCA Ventures LLC">
+  <section class="projects">
+    <h1>Projects</h1>
+    <p class="lead">The apps we're currently building and operating.</p>
+    <div class="grid">
+      {projects.map((project) => (
+        <ProjectCard
+          name={project.data.name}
+          tagline={project.data.tagline}
+          slug={project.slug}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+  }
+  .lead {
+    color: var(--color-text-muted);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+  }
+</style>
