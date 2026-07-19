@@ -1,0 +1,34 @@
+<nav class="site-nav">
+  <a class="brand" href="/">MCCA Ventures</a>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/projects/">Projects</a>
+    <a href="/privacy/">Privacy Policy</a>
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .brand {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .links {
+    display: flex;
+    gap: var(--space-md);
+  }
+  .links a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  .links a:hover {
+    color: var(--color-accent);
+  }
+</style>
