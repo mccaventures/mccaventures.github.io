@@ -6,7 +6,7 @@ const projects = defineCollection({
     name: z.string(),
     tagline: z.string(),
     status: z.enum(['live', 'in-development']),
-    screenshot: z.string().nullable().default(null),
+    icon: z.string().nullable().default(null),
     appStoreUrl: z.string().url().nullable().default(null),
   }),
 });
