@@ -32,6 +32,6 @@ The custom domain `mccaventures.com` is configured via `public/CNAME`. At the do
 ## Adding a project
 
 Add a new Markdown file to `src/content/projects/` with frontmatter fields
-`name`, `tagline`, `status` (`live` or `in-development`), `screenshot`
-(image path or `null`), and `appStoreUrl` (URL or `null`). The Projects
-listing and detail pages pick it up automatically — no code changes needed.
+`name`, `tagline`, `status` (`live` or `in-development`), `icon`
+(image path or `null`), and `appStoreUrl` (URL or `null`). The homepage
+project grid picks it up automatically — no code changes needed.
