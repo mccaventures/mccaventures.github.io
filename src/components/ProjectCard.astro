@@ -1,0 +1,83 @@
+---
+interface Props {
+  name: string;
+  tagline: string;
+  status: 'live' | 'in-development';
+  icon: string | null;
+  appStoreUrl: string | null;
+}
+
+const { name, tagline, status, icon, appStoreUrl } = Astro.props;
+const statusLabel = status === 'live' ? 'Live' : 'In Development';
+---
+<div class="card">
+  {icon ? (
+    <img src={icon} alt={`${name} icon`} class="icon" />
+  ) : (
+    <div class="icon icon-placeholder" aria-hidden="true"></div>
+  )}
+  <h2>{name}</h2>
+  <p class="tagline">{tagline}</p>
+  <span class="status">{statusLabel}</span>
+  {appStoreUrl ? (
+    <a class="store-link" href={appStoreUrl}>View on the App Store</a>
+  ) : (
+    <span class="store-link coming-soon">Coming Soon</span>
+  )}
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: var(--color-surface);
+  }
+  .icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 24px;
+    object-fit: cover;
+  }
+  .icon-placeholder {
+    background: var(--color-border);
+  }
+  .card h2 {
+    margin: var(--space-xs) 0 0 0;
+    font-size: 1.1rem;
+  }
+  .tagline {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+  .status {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+  }
+  .store-link {
+    display: inline-block;
+    margin-top: var(--space-xs);
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .store-link:not(.coming-soon) {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+  .store-link.coming-soon {
+    background: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: default;
+  }
+</style>
