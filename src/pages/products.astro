@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getCollection } from 'astro:content';
+
+const products = await getCollection('products');
+---
+
+<BaseLayout title="Products — MCCA Ventures">
+  <section class="products">
+    <h1>Our apps</h1>
+    <div class="grid">
+      {products.map((product) => (
+        <ProductCard
+          name={product.data.name}
+          tagline={product.data.tagline}
+          status={product.data.status}
+          icon={product.data.icon}
+          appStoreUrl={product.data.appStoreUrl}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .products {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+  }
+  .products h1 {
+    text-align: center;
+    margin-bottom: var(--space-md);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+</style>
