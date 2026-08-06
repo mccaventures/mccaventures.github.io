@@ -13,6 +13,7 @@ Use sentence case for all page headings.
 - `privacy.astro`: `<h1>Privacy Policy</h1>` → `<h1>Privacy policy</h1>`
 - `products.astro`: `<h1>Our Apps</h1>` → `<h1>Our apps</h1>`
 - `index.astro` and `404.astro` already use sentence case; no change.
+- Applies to `<h2>` subheadings too, not just page `<h1>`s: `privacy.astro`'s 8 subheadings (e.g. "Information We Collect", "Third-Party Services", "Your Rights") are sentence-cased as well (added after the final review caught this gap — the rule is "sentence case everywhere," not "h1 only").
 
 ### 2. Spacing scale
 
