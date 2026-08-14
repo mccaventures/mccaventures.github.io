@@ -1,4 +1,4 @@
-# MCCA Ventures LLC Marketing Site — Redesign Spec
+# MCCA Ventures Marketing Site — Redesign Spec
 
 Date: 2026-07-23
 
@@ -17,11 +17,11 @@ follow-on changes layered on the same branch.
 
 | Area | Before | After |
 |---|---|---|
-| Homepage | Hero + mission copy, CTA link to `/projects/` | Hero + mission copy + project grid, all on one page |
-| Projects listing (`/projects/`) | Dedicated page, grid of project cards | Removed |
+| Homepage | Hero + mission copy, CTA link to `/projects/` | Hero + mission copy only; product grid lives on its own page |
+| Products listing (`/products/`, formerly `/projects/`) | Dedicated page, grid of project cards | Kept as a dedicated page, renamed to Products, grid of product cards |
 | Project detail (`/projects/[slug]/`) | Dedicated page per project | Removed |
-| Project card | Links to detail page | Links to store (if published) or shows "Coming Soon" (if not) |
-| Nav | Home / Projects / Privacy Policy | Logo (→ `/`) / Privacy Policy |
+| Product card | Links to detail page | Links to store (if published) or shows "Coming Soon" (if not) |
+| Nav | Home / Projects / Privacy Policy | Logo (→ `/`) / Products / Privacy Policy |
 | Content schema | `name`, `tagline`, `status`, `screenshot`, `appStoreUrl`, markdown body | `name`, `tagline`, `status`, `icon`, `appStoreUrl` — no markdown body |
 | Visual style | Neutral light theme, existing tokens | Same light theme and accent color, applied more boldly (hero graphic block, bigger type, grid gallery treatment) |
 
@@ -29,7 +29,7 @@ follow-on changes layered on the same branch.
 
 - `src/pages/privacy.astro` — unchanged.
 - `src/pages/404.astro` — unchanged.
-- `src/components/Footer.astro` content (`© MCCA Ventures LLC`, contact
+- `src/components/Footer.astro` content (`© MCCA Ventures`, contact
   email `mccaventures@gmail.com`, Privacy Policy link) — unchanged.
 - `.github/workflows/deploy.yml`, `public/CNAME`, GitHub Pages hosting setup
   — unchanged.
@@ -53,14 +53,15 @@ long-form detail pages.
 
 | Route | Purpose |
 |---|---|
-| `/` | Home — hero (headline + tagline) directly above the project grid |
+| `/` | Home — hero (headline + tagline) only |
+| `/products/` | Dedicated product grid page (renamed from `/projects/`) |
 | `/privacy/` | Generic privacy policy (unchanged) |
-| `/404` | Not-found page (unchanged); also now catches old `/projects/` and `/projects/[slug]/` URLs since those routes no longer exist |
+| `/404` | Not-found page (unchanged); also now catches old `/projects/[slug]/` URLs since that route no longer exists |
 
-**Navigation** (every page): MCCA logo/name (links to `/`) and Privacy
-Policy. No "Projects" nav item — there's nothing to navigate to separately.
+**Navigation** (every page): MCCA logo/name (links to `/`), Products (links
+to `/products/`), and Privacy Policy.
 
-**Footer** (every page): unchanged — `© {year} MCCA Ventures LLC`, contact
+**Footer** (every page): unchanged — `© {year} MCCA Ventures`, contact
 email, Privacy Policy link.
 
 ## Homepage Layout
@@ -71,11 +72,16 @@ email, Privacy Policy link.
    block or gradient behind the headline, done in CSS only — no custom
    illustration asset required, keeping the "energetic" feel of Lion's hero
    wedge without needing supplied artwork.
-2. **Project grid**: a responsive grid of project cards directly below the
-   hero, replacing the current `ProjectCard.astro` link-to-detail-page
-   behavior.
 
-## Project Card
+The homepage is hero-only; the product grid lives on its own page instead
+of being merged in (see Products Page Layout below).
+
+## Products Page Layout (`/products/`)
+
+A single heading ("Our Apps") followed by a responsive grid of product
+cards, using `ProductCard.astro`.
+
+## Product Card
 
 Each card shows: square icon image, project name, tagline, and status.
 
@@ -104,7 +110,7 @@ appStoreUrl: string | null  # null -> "Coming Soon" button rendered instead of s
 ```
 
 The markdown body field is dropped — nothing renders it once detail pages
-are gone. `src/content/projects/flash-card.md` is updated to match: front
+are gone. `src/content/projects/react.md` is updated to match: front
 matter only, `icon: null` (unchanged from current `screenshot: null`
 intent), `appStoreUrl: null`, `status: in-development`. Its existing
 long-form body content is removed from the file since the schema no longer
@@ -112,8 +118,8 @@ expects one.
 
 ## Error Handling
 
-- Unmatched routes — including the now-removed `/projects/` and
-  `/projects/[slug]/` paths — render the existing `404.astro` page.
+- Unmatched routes — including the now-removed `/projects/[slug]/` path —
+  render the existing `404.astro` page.
 - Missing `icon` → placeholder square, not a broken image.
 - Missing `appStoreUrl` → "Coming Soon" button, not a dead or broken link.
 
@@ -121,10 +127,10 @@ expects one.
 
 - `npm run build` must succeed with no broken internal links.
 - Manual verification via `npm run dev`: confirm the homepage renders hero
-  → grid → footer in one scroll, the Flash Card card shows "Coming Soon",
-  Privacy Policy nav/footer links work, and old `/projects/` and
-  `/projects/[slug]/` URLs fall through to the 404 page. Confirm layout
-  holds at mobile width.
+  → footer in one scroll, `/products/` renders grid → footer, the Flash
+  Card card shows "Coming Soon", Products/Privacy Policy nav/footer links
+  work, and old `/projects/[slug]/` URLs fall through to the 404 page.
+  Confirm layout holds at mobile width.
 - No automated test suite, consistent with the original spec's scope.
 
 ## Explicitly Out of Scope

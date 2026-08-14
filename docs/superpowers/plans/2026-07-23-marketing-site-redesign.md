@@ -26,7 +26,7 @@
 | File | Change |
 |---|---|
 | `src/content/config.ts` | Modify — rename `screenshot` field to `icon` |
-| `src/content/projects/flash-card.md` | Modify — rename frontmatter field, drop markdown body |
+| `src/content/projects/react.md` | Modify — rename frontmatter field, drop markdown body |
 | `src/components/ProjectCard.astro` | Rewrite — new props (`status`, `icon`, `appStoreUrl` instead of `slug`), renders store/coming-soon button instead of linking to a detail page |
 | `src/pages/index.astro` | Rewrite — new hero copy + CSS accent block, add project grid section using `getCollection('projects')` |
 | `src/components/Nav.astro` | Modify — drop "Home" and "Projects" links, keep brand + Privacy Policy |
@@ -39,7 +39,7 @@
 
 **Files:**
 - Modify: `src/content/config.ts`
-- Modify: `src/content/projects/flash-card.md`
+- Modify: `src/content/projects/react.md`
 
 **Interfaces:**
 - Produces: content collection schema field `icon: string | null` (replaces `screenshot: string | null`), consumed by Task 2's `ProjectCard.astro` and `index.astro`.
@@ -67,7 +67,7 @@ export const collections = { projects };
 
 - [ ] **Step 2: Update Flash Card's frontmatter, drop the markdown body**
 
-Replace the full contents of `src/content/projects/flash-card.md`:
+Replace the full contents of `src/content/projects/react.md`:
 
 ```markdown
 ---
@@ -87,7 +87,7 @@ Expected: build completes with no errors (the old detail page's `data.screenshot
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/content/config.ts src/content/projects/flash-card.md
+git add src/content/config.ts src/content/projects/react.md
 git commit -m "Rename project icon field, drop unused markdown body from schema"
 ```
 
@@ -210,13 +210,13 @@ import { getCollection } from 'astro:content';
 
 const projects = await getCollection('projects');
 ---
-<BaseLayout title="MCCA Ventures LLC">
+<BaseLayout title="MCCA Ventures">
   <section class="hero">
     <div class="hero-block" aria-hidden="true"></div>
     <div class="hero-content">
       <h1>We build apps people actually want to use.</h1>
       <p class="lead">
-        MCCA Ventures LLC is a holding company launching and operating a
+        MCCA Ventures is a holding company launching and operating a
         growing portfolio of mobile apps — from games to personal finance
         tools and beyond.
       </p>

@@ -1,6 +1,6 @@
-# MCCA Ventures LLC — Marketing Site
+# MCCA Ventures — Marketing Site
 
-Marketing website for MCCA Ventures LLC, built with [Astro](https://astro.build).
+Marketing website for MCCA Ventures, built with [Astro](https://astro.build).
 
 ## Development
 
@@ -29,9 +29,9 @@ The custom domain `mccaventures.com` is configured via `public/CNAME`. At the do
 185.199.111.153
 ```
 
-## Adding a project
+## Adding a product
 
-Add a new Markdown file to `src/content/projects/` with frontmatter fields
+Add a new Markdown file to `src/content/products/` with frontmatter fields
 `name`, `tagline`, `status` (`live` or `in-development`), `icon`
-(image path or `null`), and `appStoreUrl` (URL or `null`). The homepage
-project grid picks it up automatically — no code changes needed.
+(image path or `null`), and `appStoreUrl` (URL or `null`). The Products page
+grid picks it up automatically — no code changes needed.
