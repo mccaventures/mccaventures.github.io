@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build and deploy a small Astro marketing site for MCCA Ventures LLC with a home page, a Projects listing backed by a content collection, per-project detail pages, and a generic privacy policy page.
+**Goal:** Build and deploy a small Astro marketing site for MCCA Ventures with a home page, a Projects listing backed by a content collection, per-project detail pages, and a generic privacy policy page.
 
 **Architecture:** Astro static site (no JS framework), plain CSS with custom-property design tokens, a `projects` content collection (one Markdown file per project) driving `/projects/` and `/projects/[slug]/`, deployed to GitHub Pages from `mccaventures/mccaventures.github.io` via GitHub Actions with a custom `mccaventures.com` domain.
 
@@ -85,8 +85,8 @@ dist/
 ---
 ---
 <html>
-  <head><title>MCCA Ventures LLC</title></head>
-  <body><h1>MCCA Ventures LLC</h1></body>
+  <head><title>MCCA Ventures</title></head>
+  <body><h1>MCCA Ventures</h1></body>
 </html>
 ```
 
@@ -100,7 +100,7 @@ Expected: completes with no errors, creates `node_modules/` and `package-lock.js
 Run: `npm run build`
 Expected: exits 0, prints a completed build summary, and creates `dist/index.html`.
 
-Run: `grep -o '<h1>MCCA Ventures LLC</h1>' dist/index.html`
+Run: `grep -o '<h1>MCCA Ventures</h1>' dist/index.html`
 Expected: prints the matched line (confirms the placeholder page built correctly).
 
 - [ ] **Step 8: Commit**
@@ -237,7 +237,7 @@ h1, h2, h3 {
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <p>&copy; {year} MCCA Ventures LLC</p>
+  <p>&copy; {year} MCCA Ventures</p>
   <p>
     <a href="mailto:mccaventures@gmail.com">mccaventures@gmail.com</a>
     &middot;
@@ -298,8 +298,8 @@ Replace the full contents of `src/pages/index.astro` with:
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="MCCA Ventures LLC">
-  <h1>MCCA Ventures LLC</h1>
+<BaseLayout title="MCCA Ventures">
+  <h1>MCCA Ventures</h1>
 </BaseLayout>
 ```
 
@@ -327,7 +327,7 @@ git commit -m "Add design tokens, nav, footer, and base layout"
 
 **Files:**
 - Create: `src/content/config.ts`
-- Create: `src/content/projects/flash-card.md`
+- Create: `src/content/projects/react.md`
 
 **Interfaces:**
 - Produces: the `projects` collection, schema `{ name: string; tagline: string; status: 'live' | 'in-development'; screenshot: string | null; appStoreUrl: string | null }`, queryable via `getCollection('projects')`. Each entry has Astro's standard `slug` and `data` fields — Task 6 and 7 rely on `project.slug` and `project.data.*` exactly as named here.
@@ -352,7 +352,7 @@ const projects = defineCollection({
 export const collections = { projects };
 ```
 
-- [ ] **Step 2: Write `src/content/projects/flash-card.md`**
+- [ ] **Step 2: Write `src/content/projects/react.md`**
 
 ```markdown
 ---
@@ -380,7 +380,7 @@ Expected: exits 0 with no schema validation errors (the collection isn't consume
 - [ ] **Step 4: Commit**
 
 ```bash
-git add src/content/config.ts src/content/projects/flash-card.md
+git add src/content/config.ts src/content/projects/react.md
 git commit -m "Add projects content collection with Flash Card entry"
 ```
 
@@ -400,11 +400,11 @@ git commit -m "Add projects content collection with Flash Card entry"
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="MCCA Ventures LLC">
+<BaseLayout title="MCCA Ventures">
   <section class="hero">
-    <h1>MCCA Ventures LLC</h1>
+    <h1>MCCA Ventures</h1>
     <p class="lead">
-      MCCA Ventures LLC is a holding company that builds, launches, and
+      MCCA Ventures is a holding company that builds, launches, and
       operates a growing portfolio of mobile applications.
     </p>
     <p>
@@ -525,7 +525,7 @@ import ProjectCard from '../../components/ProjectCard.astro';
 
 const projects = await getCollection('projects');
 ---
-<BaseLayout title="Projects — MCCA Ventures LLC">
+<BaseLayout title="Projects — MCCA Ventures">
   <section class="projects">
     <h1>Projects</h1>
     <p class="lead">The apps we're currently building and operating.</p>
@@ -606,7 +606,7 @@ const { project } = Astro.props;
 const { data } = project;
 const { Content } = await render(project);
 ---
-<BaseLayout title={`${data.name} — MCCA Ventures LLC`}>
+<BaseLayout title={`${data.name} — MCCA Ventures`}>
   <article class="project-detail">
     <h1>{data.name}</h1>
     <p class="tagline">{data.tagline}</p>
@@ -721,13 +721,13 @@ git commit -m "Add project detail page"
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Privacy Policy — MCCA Ventures LLC">
+<BaseLayout title="Privacy Policy — MCCA Ventures">
   <article class="policy">
     <h1>Privacy Policy</h1>
     <p class="updated">Last updated: July 18, 2026</p>
 
     <p>
-      This Privacy Policy describes how MCCA Ventures LLC ("MCCA Ventures,"
+      This Privacy Policy describes how MCCA Ventures ("MCCA Ventures,"
       "we," "us," or "our") collects, uses, and shares information in
       connection with the mobile applications we publish (collectively, the
       "Apps") and this website.
@@ -875,7 +875,7 @@ git commit -m "Add privacy policy page"
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Page Not Found — MCCA Ventures LLC">
+<BaseLayout title="Page Not Found — MCCA Ventures">
   <section class="not-found">
     <h1>Page not found</h1>
     <p>The page you're looking for doesn't exist.</p>
@@ -965,9 +965,9 @@ jobs:
 - [ ] **Step 3: Replace the full contents of `README.md`**
 
 ```markdown
-# MCCA Ventures LLC — Marketing Site
+# MCCA Ventures — Marketing Site
 
-Marketing website for MCCA Ventures LLC, built with [Astro](https://astro.build).
+Marketing website for MCCA Ventures, built with [Astro](https://astro.build).
 
 ## Development
 

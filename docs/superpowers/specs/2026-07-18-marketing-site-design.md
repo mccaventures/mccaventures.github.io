@@ -1,10 +1,10 @@
-# MCCA Ventures LLC Marketing Site — Design Spec
+# MCCA Ventures Marketing Site — Design Spec
 
 Date: 2026-07-18
 
 ## Purpose
 
-Build a simple marketing website for MCCA Ventures LLC, a holding company that
+Build a simple marketing website for MCCA Ventures, a holding company that
 owns a portfolio of mobile applications spanning categories such as gaming and
 personal finance (intentionally not limited to any one industry, since the
 portfolio will grow). The site introduces the company, lists its current
@@ -50,7 +50,7 @@ generic privacy policy that covers the app portfolio.
 
 | Route | Purpose |
 |---|---|
-| `/` | Home — MCCA Ventures LLC intro/mission copy, pointer to Projects |
+| `/` | Home — MCCA Ventures intro/mission copy, pointer to Projects |
 | `/projects/` | Projects listing — a card per project (name, tagline, link to detail page) |
 | `/projects/[slug]/` | Project detail page, generated from the content collection |
 | `/privacy/` | Generic privacy policy for a mobile-app holding company |
@@ -58,7 +58,7 @@ generic privacy policy that covers the app portfolio.
 
 **Navigation** (every page): Home / Projects / Privacy Policy.
 
-**Footer** (every page): `© MCCA Ventures LLC`, contact email
+**Footer** (every page): `© MCCA Ventures`, contact email
 (`mccaventures@gmail.com`), link to Privacy Policy. Contact is footer-only —
 no dedicated Contact page/nav item.
 
@@ -94,7 +94,7 @@ game modes). At launch:
 ## Page Content
 
 - **Home page copy**: drafted by the assistant as mission-style copy framing
-  MCCA Ventures LLC as a holding company building and operating a portfolio
+  MCCA Ventures as a holding company building and operating a portfolio
   of mobile applications across categories (gaming, personal finance, and
   others — deliberately non-specific so the copy doesn't need to change as
   the portfolio grows). User reviews/edits during implementation.
